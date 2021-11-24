@@ -89,7 +89,7 @@ const ProductDetailsPage = () => {
     //   </script>
     // `;
     mount();
-  }, []);
+  }, [params.id]);
 
   return (
     <div ref={rootRef}>

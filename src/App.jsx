@@ -10,6 +10,7 @@ import DealerNetworkPage from "./pages/DealerNetworkPage/DealerNetworkPage";
 import CustomerReviewsPage from "./pages/CustomerReviewsPage/CustomerReviewsPage";
 import NewsEventsPage from "./pages/NewsEventsPage/NewsEventsPage";
 import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
+import ContactUsPage from "./pages/ContactUsPage/ContactUsPage";
 import { getProducts } from "./actions/getProducts";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 
@@ -60,7 +61,9 @@ function App() {
         <Route path="/product-details/:id">
           <ProductDetailsPage />
         </Route>
-
+        <Route path="/contact-us">
+          <ContactUsPage />
+        </Route>
         <Route path="/" exact>
           <HomePage />
         </Route>
