@@ -17,19 +17,17 @@ const carouselItems = [
     price: 455000,
     bgImg: "/img/slider/slider-img7.jpg",
   },
+  {
+    id: "2",
+    name: "SPORTS ROAD TYRE",
+    price: 365000,
+    bgImg: "/img/slider/slider-img5.jpg",
+  },
 ];
 
-const HomePage = () => {
-  // import img from "/img/slider/slider-img6.jpg";
-  const [products, setProducts] = useState([]);
-
-  async function mount() {
-    const response = await getProducts();
-    setProducts(response);
-  }
-
+const HomePage = ({ products }) => {
   useEffect(() => {
-    mount();
+    console.log(products);
   }, []);
   const handleChange = () => {};
 

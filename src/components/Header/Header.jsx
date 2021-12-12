@@ -19,10 +19,10 @@ const Header = ({ products }) => {
               <div className="user-panel">
                 <div style={{ marginTop: 20 }}></div>
                 <div className="social-links">
-                  <Link to="https://www.facebook.com/motorheadnepal" className="facebook" target="_blank">
+                  <a href="https://www.facebook.com/motorheadnepal" className="facebook" target="_blank">
                     <i className="fa fa-facebook"></i>
                     <span>facebook</span>
-                  </Link>
+                  </a>
                   <Link to="/" className="youtube">
                     <i className="fa fa-youtube"></i>
                     <span>youtube</span>

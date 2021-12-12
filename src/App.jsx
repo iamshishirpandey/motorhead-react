@@ -69,7 +69,7 @@ function App() {
           <GalleryPage />
         </Route>
         <Route path="/" exact>
-          <HomePage />
+          <HomePage products={products} />
         </Route>
       </Switch>
     </Fragment>
