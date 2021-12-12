@@ -3,7 +3,7 @@ import { Carousel } from "react-responsive-carousel";
 import OwlCarousel from "react-owl-carousel";
 import { getProducts } from "../../actions/getProducts";
 import { useEffect, useState } from "react";
-
+import { Link } from "react-router-dom";
 const carouselItems = [
   {
     id: "1",
@@ -55,28 +55,42 @@ const HomePage = ({ products }) => {
                 </div>
               </div>
             </div> */}
-
-            {carouselItems.map((item) => (
-              <div
-                key={item.id}
-                className="hs-item set-bg"
-                style={{ backgroundImage: `url(${item.bgImg})`, height: "80vh" }}
-                // data-setbg="/img/slider/slider-img6.jpg"
-              >
-                <div className="container">
-                  <div className="row" style={{ display: "flex", paddingTop: 120, alignItem: "center", height: "80vh" }}>
-                    <div className="col-xl-6 col-lg-7 text-white text-left">
-                      <h5 style={{ color: "white" }}>MOTORHEAD</h5>
-                      <h1>SPORTS ROAD TYRE</h1>
-                      <p style={{ fontSize: 20 }}>PRICE MRP- RS. 395000</p>
-                      <a href={`/product-details/${item.id}`} className="site-btn sb-line">
-                        Read More
-                      </a>
+            {products &&
+              products.map((product) => {
+                console.log(product.fields.images);
+                return (
+                  <div
+                    key={product.sys.id}
+                    className="hs-item set-bg"
+                    style={{ backgroundImage: `url(${product.fields.images[0].fields.file.url})`, height: "80vh" }}
+                    // data-setbg="/img/slider/slider-img6.jpg"
+                  >
+                    <div className="container">
+                      <div className="row" style={{ display: "flex", paddingTop: 120, alignItem: "center", height: "80vh" }}>
+                        <div className="col-xl-6 col-lg-7 text-white text-left">
+                          <h5 style={{ color: "white" }}>MOTORHEAD</h5>
+                          <h1>{product.fields.title}</h1>
+                          <p style={{ fontSize: 20 }}>PRICE MRP- {product.fields.price}</p>
+                          <a href={`/product-details/${product.sys.id}`} className="site-btn sb-line">
+                            Read More
+                          </a>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                  // <div>
+                  //   <div className="card justify-center" style={{ textAlign: "center" }}>
+                  //     <img className="img" src={product.fields.images[0].fields.file.url} style={{ marginBottom: 10, height: 200 }} />
+                  //     <h6>{product.fields.title}</h6>
+                  //     <p>PRICE MRP- {product.fields.price}</p>
+                  //     <Link to={`/product-details/${product.sys.id}`} className="site-btn sb-line" />
+                  //   </div>
+                  // </div>
+                );
+              })}
+            {/* {carouselItems.map((item) => (
+
+            ))} */}
           </Carousel>
         </div>
       </section>
@@ -86,7 +100,22 @@ const HomePage = ({ products }) => {
             <h2>OUR PRODUCTS</h2>
           </div>
           <OwlCarousel items={4} className="owl-theme" loop nav margin={8} nav={true}>
-            <div>
+            {products &&
+              products.map((product) => {
+                console.log(product.fields.images);
+                return (
+                  <div>
+                    <div className="card justify-center" style={{ textAlign: "center" }}>
+                      <img className="img" src={product.fields.images[0].fields.file.url} style={{ marginBottom: 10, height: 200 }} />
+                      <h6>{product.fields.title}</h6>
+                      <p>PRICE MRP- {product.fields.price}</p>
+                      <Link to={`/product-details/${product.sys.id}`} className="site-btn sb-line" />
+                    </div>
+                  </div>
+                );
+              })}
+
+            {/* <div>
               <div className="card justify-center" style={{ textAlign: "center" }}>
                 <img className="img" src="/img/slider/slider-img6.jpg" />
                 <h6>Tekken 250</h6>
@@ -104,7 +133,7 @@ const HomePage = ({ products }) => {
             </div>
             <div>
               <img className="img" src="/img/slider/slider-img6.jpg" />
-            </div>
+            </div> */}
           </OwlCarousel>
         </div>
       </section>
