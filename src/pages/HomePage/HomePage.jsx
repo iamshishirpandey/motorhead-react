@@ -82,14 +82,16 @@ const HomePage = ({ products }) => {
       </section>
       <section className="top-letest-product-section">
         <div className="container">
-          {/* <div className="section-title">
+          <div className="section-title">
             <h2>OUR PRODUCTS</h2>
-          </div> */}
-          {/* <OwlCarousel items={2} className="owl-theme" loop nav margin={8} nav={true}>
+          </div>
+          <OwlCarousel items={4} className="owl-theme" loop nav margin={8} nav={true}>
             <div>
-              <img className="img" src="/img/slider/slider-img6.jpg" />
-              <h6>Tekken 250</h6>
-              <p>PRICE MRP- RS. 375000</p>
+              <div className="card justify-center" style={{ textAlign: "center" }}>
+                <img className="img" src="/img/slider/slider-img6.jpg" />
+                <h6>Tekken 250</h6>
+                <p>PRICE MRP- RS. 375000</p>
+              </div>
             </div>
             <div>
               <img className="img" src="/img/slider/slider-img6.jpg" />
@@ -103,13 +105,14 @@ const HomePage = ({ products }) => {
             <div>
               <img className="img" src="/img/slider/slider-img6.jpg" />
             </div>
-          </OwlCarousel> */}
+          </OwlCarousel>
         </div>
       </section>
 
       <section className="banner-section">
         <div className="container">
           <div className="banner set-bg" style={{ backgroundImage: "/img/banner-bg.jpg" }}>
+            <img src="/img/banner-logo.png" alt="" />
             <div className="tag-new">NEW</div>
             <span>Pokhara Showroom Opening Ceremony</span>
             <h3>MOTORHEAD Motorcycle</h3>
