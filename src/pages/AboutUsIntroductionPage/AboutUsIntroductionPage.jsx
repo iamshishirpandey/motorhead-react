@@ -1,6 +1,17 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import { getAboutUs } from "../../actions/getAboutUs";
 const AboutUsIntroduction = () => {
+  const [board, setBoard] = useState([]);
+
+  async function mount() {
+    const response = await getAboutUs();
+    setBoard(response);
+  }
+
+  useEffect(() => {
+    mount();
+    console.log(board);
+  }, []);
   return (
     <>
       <div className="page-top-info">

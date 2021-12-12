@@ -1,5 +1,7 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
+import OwlCarousel from "react-owl-carousel";
+// import img from "/img/slider/slider-img6.jpg";
 
 const carouselItems = [
   {
@@ -51,12 +53,12 @@ const HomePage = () => {
                 style={{ backgroundImage: `url(${item.bgImg})`, height: "80vh" }}
                 // data-setbg="/img/slider/slider-img6.jpg"
               >
-                <div className="">
-                  <div className="row" style={{ display: "flex", flexDirection: "column", justifyContent: "center", height: "80vh" }}>
-                    <div className="col-xl-6 col-lg-7 text-white">
-                      <span style={{ color: "black" }}>MOTORHEAD</span>
-                      <h2>TEKKEN250</h2>
-                      <p>PRICE MRP- RS. 395000</p>
+                <div className="container">
+                  <div className="row" style={{ display: "flex", paddingTop: 120, alignItem: "center", height: "80vh" }}>
+                    <div className="col-xl-6 col-lg-7 text-white text-left">
+                      <h5 style={{ color: "white" }}>MOTORHEAD</h5>
+                      <h1>SPORTS ROAD TYRE</h1>
+                      <p style={{ fontSize: 20 }}>PRICE MRP- RS. 395000</p>
                       <a href={`/product-details/${item.id}`} className="site-btn sb-line">
                         Read More
                       </a>
@@ -65,96 +67,6 @@ const HomePage = () => {
                 </div>
               </div>
             ))}
-
-            {/* <div className="hs-item set-bg" data-setbg="/img/slider/slider-img7.jpg">
-              <div className="container">
-                <div className="row">
-                  <div className="col-xl-6 col-lg-7 text-white">
-                    <span>MOTORHEAD</span>
-                    <h2>SCRAMBLER250</h2>
-                    <p>PRICE MRP- RS. 455000</p>
-                    <a href="scrambler250.htm" className="site-btn sb-line">
-                      Read More
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="hs-item set-bg" data-setbg="/img/slider/slider-img5.jpg">
-              <div className="container">
-                <div className="row">
-                  <div className="col-xl-6 col-lg-7 text-white">
-                    <span>MOTORHEAD</span>
-                    <h2>SPORTS OFF ROAD TYRE</h2>
-                    <p>PRICE MRP- RS. 368000</p>
-                    <a href="sports-off-road-tyre.htm" className="site-btn sb-line">
-                      Read More
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="hs-item set-bg" data-setbg="img/slider/slider-img1.jpg">
-              <div className="container">
-                <div className="row">
-                  <div className="col-xl-6 col-lg-7 text-white">
-                    <span>MOTORHEAD</span>
-                    <h2>SPORTS ROAD TYRE</h2>
-                    <p>PRICE MRP- RS. 365000</p>
-                    <a href="sports-road-tyre.htm" className="site-btn sb-line">
-                      Read More
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="hs-item set-bg" data-setbg="img/slider/slider-img2.jpg">
-              <div className="container">
-                <div className="row">
-                  <div className="col-xl-6 col-lg-7 text-white">
-                    <span>MOTORHEAD</span>
-                    <h2>X TORQUE</h2>
-                    <p>PRICE MRP- RS. 380000</p>
-                    <a href="x-torque.htm" className="site-btn sb-line">
-                      Read More
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="hs-item set-bg" data-setbg="img/slider/slider-img3.jpg">
-              <div className="container">
-                <div className="row">
-                  <div className="col-xl-6 col-lg-7 text-white">
-                    <span>MOTORHEAD</span>
-                    <h2>MH200X</h2>
-                    <p>PRICE MRP- RS. 375000</p>
-                    <a href="mh200x.htm" className="site-btn sb-line">
-                      Read More
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="hs-item set-bg" data-setbg="img/slider/slider-img4.jpg">
-              <div className="container">
-                <div className="row">
-                  <div className="col-xl-6 col-lg-7 text-white">
-                    <span>MOTORHEAD</span>
-                    <h2>MH150R</h2>
-                    <p>PRICE MRP- Rs. 288000</p>
-                    <a href="mh150r.htm" className="site-btn sb-line">
-                      Read More
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div> */}
           </Carousel>
         </div>
       </section>
@@ -163,119 +75,23 @@ const HomePage = () => {
           <div className="section-title">
             <h2>OUR PRODUCTS</h2>s
           </div>
-          <div className="product-slider owl-carousel">
-            <div className="product-item">
-              <div className="pi-pic">
-                <img src="/img/home-products/5.jpg" alt="" />
-                <div className="pi-links">
-                  <a href="tekken250.htm" className="add-card">
-                    <i className="flaticon-right-arrow"></i>
-                    <span>READ MORE</span>
-                  </a>
-                </div>
-              </div>
-              <div className="pi-text">
-                <h6>TEKKEN250</h6>
-                <p align="center">PRICE MRP- RS. 395000</p>
-              </div>
+          <OwlCarousel items={2} className="owl-theme" loop nav margin={8} nav={true}>
+            <div>
+              <img className="img" src="/img/slider/slider-img6.jpg" />
             </div>
-
-            <div className="product-item">
-              <div className="pi-pic">
-                <img src="/img/home-products/7.jpg" alt="" />
-                <div className="pi-links">
-                  <a href="scrambler250.htm" className="add-card">
-                    <i className="flaticon-right-arrow"></i>
-                    <span>READ MORE</span>
-                  </a>
-                </div>
-              </div>
-              <div className="pi-text">
-                <h6>SCRAMBLER250</h6>
-                <p align="center">PRICE MRP- RS. 455000</p>
-              </div>
+            <div>
+              <img className="img" src="/img/slider/slider-img6.jpg" />
             </div>
-
-            <div className="product-item">
-              <div className="pi-pic">
-                <img src="/img/home-products/6.jpg" alt="" />
-                <div className="pi-links">
-                  <a href="sports-off-road-tyre.htm" className="add-card">
-                    <i className="flaticon-right-arrow"></i>
-                    <span>READ MORE</span>
-                  </a>
-                </div>
-              </div>
-              <div className="pi-text">
-                <h6>SPORTS OFF ROAD TYRE</h6>
-                <p align="center">PRICE MRP- RS. 368000</p>
-              </div>
+            <div>
+              <img className="img" src="/img/slider/slider-img6.jpg" />
             </div>
-
-            <div className="product-item">
-              <div className="pi-pic">
-                <img src="/img/home-products/1.jpg" alt="" />
-                <div className="pi-links">
-                  <a href="sports-road-tyre.htm" className="add-card">
-                    <i className="flaticon-right-arrow"></i>
-                    <span>READ MORE</span>
-                  </a>
-                </div>
-              </div>
-              <div className="pi-text">
-                <h6>SPORTS ROAD TYRE</h6>
-                <p align="center">PRICE MRP- RS. 365000</p>
-              </div>
+            <div>
+              <img className="img" src="/img/slider/slider-img6.jpg" />
             </div>
-
-            <div className="product-item">
-              <div className="pi-pic">
-                <img src="/img/home-products/2.jpg" alt="" />
-                <div className="pi-links">
-                  <a href="x-torque.htm" className="add-card">
-                    <i className="flaticon-right-arrow"></i>
-                    <span>READ MORE</span>
-                  </a>
-                </div>
-              </div>
-              <div className="pi-text">
-                <h6>X TORQUE-250</h6>
-                <p align="center">PRICE MRP- RS. 380000</p>
-              </div>
+            <div>
+              <img className="img" src="/img/slider/slider-img6.jpg" />
             </div>
-
-            <div className="product-item">
-              <div className="pi-pic">
-                <img src="/img/home-products/3.jpg" alt="" />
-                <div className="pi-links">
-                  <a href="mh200x.htm" className="add-card">
-                    <i className="flaticon-right-arrow"></i>
-                    <span>READ MORE</span>
-                  </a>
-                </div>
-              </div>
-              <div className="pi-text">
-                <h6>MH200X</h6>
-                <p align="center">PRICE MRP- RS. 375000</p>
-              </div>
-            </div>
-
-            <div className="product-item">
-              <div className="pi-pic">
-                <img src="/img/home-products/4.jpg" alt="" />
-                <div className="pi-links">
-                  <a href="mh150r.htm" className="add-card">
-                    <i className="flaticon-right-arrow"></i>
-                    <span>READ MORE</span>
-                  </a>
-                </div>
-              </div>
-              <div className="pi-text">
-                <h6>MH150R</h6>
-                <p align="center">PRICE MRP- RS. 288000</p>
-              </div>
-            </div>
-          </div>
+          </OwlCarousel>
         </div>
       </section>
 
