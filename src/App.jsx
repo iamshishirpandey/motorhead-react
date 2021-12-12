@@ -13,6 +13,7 @@ import ProductDetailsPage from "./pages/ProductDetailsPage/ProductDetailsPage";
 import ContactUsPage from "./pages/ContactUsPage/ContactUsPage";
 import { getProducts } from "./actions/getProducts";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import GalleryPage from "./pages/GalleryPage/GalleryPage";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -63,6 +64,9 @@ function App() {
         </Route>
         <Route path="/contact-us">
           <ContactUsPage />
+        </Route>
+        <Route path="/gallery">
+          <GalleryPage />
         </Route>
         <Route path="/" exact>
           <HomePage />

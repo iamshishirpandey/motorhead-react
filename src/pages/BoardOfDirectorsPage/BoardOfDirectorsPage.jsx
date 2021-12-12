@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getBoardOfDirectors } from "../../actions/getBoardOfDirectors";
 
 const BoardOfDirectorsPage = () => {
+  const [board, setBoard] = useState([]);
+
+  async function mount() {
+    const response = await getBoardOfDirectors();
+    setBoard(response);
+  }
+
+  useEffect(() => {
+    mount();
+  }, []);
   return (
     <>
       <div className="page-top-info">
@@ -15,73 +26,24 @@ const BoardOfDirectorsPage = () => {
       <section className="about-us-section">
         <div className="container">
           <div className="row">
-            <div className="col-lg-4 col-sm-6">
-              <div className="product-item">
-                <div className="pi-pic">
-                  <img src="/img/about-us/no-photo-available.jpg" alt="" />
-                </div>
-                <div className="pi-text">
-                  <h6>Lok Harsha Shakya</h6>
-                  <p align="center">Chairman</p>
-                  <br />
-                  <br />
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-4 col-sm-6">
-              <div className="product-item">
-                <div className="pi-pic">
-                  <img src="/img/about-us/shiva-prasad-ghimire.jpg" alt="" />
-                </div>
-                <div className="pi-text">
-                  <h6>Shiva Prasad Ghimire</h6>
-                  <p align="center">Vice–Chairman</p>
-                  <br />
-                  <br />
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-4 col-sm-6">
-              <div className="product-item">
-                <div className="pi-pic">
-                  <img src="/img/about-us/sugam-ghimire.jpg" alt="" />
-                </div>
-                <div className="pi-text">
-                  <h6>Sugam Ghimire</h6>
-                  <p align="center">Executive Director</p>
-                  <br />
-                  <br />
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-4 col-sm-6">
-              <div className="product-item">
-                <div className="pi-pic">
-                  <img src="/img/about-us/sudip-ghimire.jpg" alt="" />
-                </div>
-                <div className="pi-text">
-                  <h6>Sudip Ghimire</h6>
-                  <p align="center">Director</p>
-                  <br />
-                  <br />
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-4 col-sm-6">
-              <div className="product-item">
-                <div className="pi-pic">
-                  <img src="/img/about-us/no-photo-available.jpg" alt="" />
-                </div>
-                <div className="pi-text">
-                  <h6>Shresha Shakya</h6>
-                  <p align="center">Director</p>
-                </div>
-              </div>
-            </div>
+            {board &&
+              board.map((item, index) => {
+                return (
+                  <div className="col-lg-4 col-sm-6">
+                    <div className="product-item">
+                      <div className="pi-pic">
+                        <img src={item.fields.image.fields.file.url} alt="" />
+                      </div>
+                      <div className="pi-text">
+                        <h6>{item.fields.name}</h6>
+                        <p align="center">{item.fields.position}</p>
+                        <br />
+                        <br />
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
           </div>
         </div>
       </section>

@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getDealerNetwork } from "../../actions/getDealerNetwork";
 
 const DealerNetworkPage = () => {
+  const [dealers, setDealers] = useState([]);
+
+  async function mount() {
+    const response = await getDealerNetwork();
+    setDealers(response);
+  }
+
+  useEffect(() => {
+    mount();
+  }, []);
   return (
     <>
       <div className="page-top-info">
@@ -12,222 +23,26 @@ const DealerNetworkPage = () => {
       <section className="about-us-section">
         <div className="container">
           <div className="row">
-            <div className="col-lg-3 col-sm-6">
-              <h6 className="border-bottom mb-2 p-2 hd-txt-color">SLR Techno & Trade Pvt. Ltd.</h6>
-              <div className="p-2">
-                Dhobighat, Lalitpur
-                <br />
-                Phone: 01-5542934
-                <br />
-                Mobile: 9851134782
-                <br />
-                <a href="mailto:sales@motorheadnepal.com.np" target="_blank">
-                  sales@motorheadnepal.com.np
-                </a>
-              </div>
-              <div className="d-lg-none d-md-block d-sm-block" style={{ marginBottom: 30 }}></div>
-            </div>
-
-            <div className="col-lg-3 col-sm-6">
-              <div className="product-item">
-                <h6 className="border-bottom mb-2 p-2 hd-txt-color">SLR Techno & Trade Pvt. Ltd.</h6>
-                <div className="p-2">
-                  Gatthaghar, Bhaktpur
-                  <br />
-                  Mobile: 9851237934
-                  <br />
-                  <a href="mailto:sales@motorheadnepal.com.np" target="_blank">
-                    sales@motorheadnepal.com.np
-                  </a>
+            {dealers.reverse().map((dealer, index) => {
+              return (
+                <div className="col-lg-3 col-sm-6">
+                  <h6 className="border-bottom mb-2 p-2 hd-txt-color">{dealer.fields.name}</h6>
+                  <div className="p-2">
+                    {dealer.fields.location}
+                    <br />
+                    Phone: {dealer.fields.telephone}
+                    <br />
+                    Mobile: {dealer.fields.mobile}
+                    <br />
+                    <a href="mailto:sales@motorheadnepal.com.np" target="_blank">
+                      {dealer.fields.email}
+                    </a>
+                  </div>
+                  <div className="d-lg-none d-md-block d-sm-block" style={{ marginBottom: 30 }}></div>
                 </div>
-                <div className="d-lg-none d-md-block d-sm-block" style={{ marginBottom: 30 }}></div>
-              </div>
-            </div>
-
-            <div className="col-lg-3 col-sm-6">
-              <div className="product-item">
-                <h6 className="border-bottom mb-2 p-2 hd-txt-color">SLR Techno & Trade Pvt. Ltd.</h6>
-                <div className="p-2">
-                  Bajalu, Kathmandu
-                  <br />
-                  Mobile: 9851134782, 9851275369
-                  <br />
-                  <a href="mailto:sales@motorheadnepal.com.np" target="_blank">
-                    sales@motorheadnepal.com.np
-                  </a>
-                </div>
-                <div className="d-lg-none d-md-block d-sm-block" style={{ marginBottom: 30 }}></div>
-              </div>
-            </div>
-
-            <div className="col-lg-3 col-sm-6">
-              <div className="product-item">
-                <h6 className="border-bottom mb-2 p-2 hd-txt-color">Eco Exim Nepal Pvt. Ltd.</h6>
-                <div className="p-2">
-                  Teku, Kathmandu
-                  <br />
-                  Phone: 01-4265337
-                  <br />
-                  <a href="mailto:pratik.man.singh@gmail.com" target="_blank">
-                    pratik.man.singh@gmail.com
-                  </a>
-                </div>
-                <div className="d-lg-none d-md-block d-sm-block" style={{ marginBottom: 30 }}></div>
-              </div>
-            </div>
+              );
+            })}
           </div>
-
-          <div className="clearfix"></div>
-          <br />
-
-          <div className="row">
-            <div className="col-lg-3 col-sm-6">
-              <div className="product-item">
-                <h6 className="border-bottom mb-2 p-2 hd-txt-color">Scrambler Rider's Showroom</h6>
-                <div className="p-2">
-                  Banepa
-                  <br />
-                  Mobile: 9808111883
-                  <br />
-                  <a href="mailto:veeshalshrestha12@gmail.com" target="_blank">
-                    veeshalshrestha12@gmail.com
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="col-lg-3 col-sm-6">
-              <h6 className="border-bottom mb-2 p-2 hd-txt-color">Grace & Global Trading</h6>
-              <div className="p-2">
-                Nepalgunj, Banke
-                <br />
-                Mobile: 9858035045
-                <br />
-                <a href="mailto:graceglobaltradingpvtltd@gmail.com" target="_blank">
-                  graceglobaltradingpvtltd@gmail.com
-                </a>
-              </div>
-              <div className="d-lg-none d-md-block d-sm-block" style={{ marginBottom: 30 }}></div>
-            </div>
-
-            <div className="col-lg-3 col-sm-6">
-              <h6 className="border-bottom mb-2 p-2 hd-txt-color">Robin's Motorhead Chitwan</h6>
-              <div className="p-2">
-                Bharatpur-10, Chitwan
-                <br />
-                Mobile: 9865218807
-                <br />
-                <a href="mailto:gahatraj1993@gmail.com" target="_blank">
-                  gahatraj1993@gmail.com
-                </a>
-              </div>
-              <div className="d-lg-none d-md-block d-sm-block" style={{ marginBottom: 30 }}></div>
-            </div>
-
-            <div className="col-lg-3 col-sm-6">
-              <h6 className="border-bottom mb-2 p-2 hd-txt-color">Ajanta Traders</h6>
-              <div className="p-2">
-                Birendranagar-03, Surkhet
-                <br />
-                Phone: 083-523903
-                <br />
-                <a href="mailto:chaudharyarbin87@gmail.com" target="_blank">
-                  chaudharyarbin87@gmail.com
-                </a>
-              </div>
-              <div className="d-lg-none d-md-block d-sm-block" style={{ marginBottom: 30 }}></div>
-            </div>
-          </div>
-
-          <div className="clearfix"></div>
-          <br />
-
-          <div className="row">
-            <div className="col-lg-3 col-sm-6">
-              <h6 className="border-bottom mb-2 p-2 hd-txt-color">Bajrayogini Auto Traders</h6>
-              <div className="p-2">
-                Mitrapark, Chabehil
-                <br />
-                Mobile: 9842398619
-              </div>
-              <div className="d-lg-none d-md-block d-sm-block" style={{ marginBottom: 30 }}></div>
-            </div>
-
-            <div className="col-lg-3 col-sm-6">
-              <h6 className="border-bottom mb-2 p-2 hd-txt-color">BHC International</h6>
-              <div className="p-2">
-                Birgunj
-                <br />
-                Mobile: 9888415967
-                <br />
-                <a href="mailto:abdulrommyhasmi@gmail.com" target="_blank">
-                  abdulrommyhasmi@gmail.com
-                </a>
-              </div>
-            </div>
-
-            <div className="col-lg-3 col-sm-6">
-              <h6 className="border-bottom mb-2 p-2 hd-txt-color">Dynamic Automobiles</h6>
-              <div className="p-2">
-                Tulsipur-5, Dang
-                <br />
-                Mobile: 9847981000
-                <br />
-                <a href="mailto:nabinkumarkhadka@gmail.com" target="_blank">
-                  nabinkumarkhadka@gmail.com
-                </a>
-              </div>
-              <div className="d-lg-none d-md-block d-sm-block" style={{ marginBottom: 30 }}></div>
-            </div>
-
-            <div className="col-lg-3 col-sm-6">
-              <h6 className="border-bottom mb-2 p-2 hd-txt-color">Multi Star Motor Pvt. Ltd.</h6>
-              <div className="p-2">
-                Pokhara
-                <br />
-                Phone: 061-532360
-                <br />
-                <a href="mailto:multistarmotor@outlook.com" target="_blank">
-                  multistarmotor@outlook.com
-                </a>
-              </div>
-              <div className="d-lg-none d-md-block d-sm-block" style={{ marginBottom: 30 }}></div>
-            </div>
-          </div>
-
-          <div className="clearfix"></div>
-          <br />
-
-          <div className="row">
-            <div className="col-lg-3 col-sm-6">
-              <h6 className="border-bottom mb-2 p-2 hd-txt-color">Poudel Traders</h6>
-              <div className="p-2">
-                Itahari
-                <br />
-                Mobile: 9842399561
-                <br />
-                <a href="mailto:poudeltraders01@gmail.com" target="_blank">
-                  poudeltraders01@gmail.com
-                </a>
-              </div>
-            </div>
-
-            <div className="col-lg-3 col-sm-6">
-              <h6 className="border-bottom mb-2 p-2 hd-txt-color">Sabitri Automobiles</h6>
-              <div className="p-2">
-                Baglung
-                <br />
-                Mobile: 9857625566
-                <br />
-                <a href="mailto:rajeshgharti28@gmail.com" target="_blank">
-                  rajeshgharti28@gmail.com
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="clearfix"></div>
-          <br />
         </div>
       </section>
 

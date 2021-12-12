@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getNewsAndEvents } from "../../actions/getNewsAndEvents";
 
 const NewsEventsPage = () => {
+  const [news, setDealers] = useState([]);
+
+  async function mount() {
+    const response = await getNewsAndEvents();
+    setDealers(response);
+  }
+
+  useEffect(() => {
+    mount();
+  }, []);
   return (
     <>
       <div className="page-top-info">
@@ -12,62 +23,31 @@ const NewsEventsPage = () => {
       <section className="gallery-section">
         <div className="container">
           <div className="row">
-            <div className="col-lg-12">
-              <h3 style={{ color: "#cc3333" }}>Pokhara Showroom Opening Ceremony</h3>
-              <strong>MotorHead Motorcycle Showroom Opened in Pokhara - Magh 1, 2076.</strong>
-
-              <div className="gallery-block grid-gallery">
-                <div className="container">
-                  <div className="row">
-                    <div className="col-md-6 col-lg-3 item">
-                      <a className="lightbox" href="/gallery/img/image1big.jpg" title="Press Release">
-                        <img className="img-fluid image scale-on-hover" src="/gallery/img/image1.jpg" />
-                      </a>
-                    </div>
-                    <div className="col-md-6 col-lg-3 item">
-                      <a className="lightbox" href="/gallery/img/image2.jpg">
-                        <img className="img-fluid image scale-on-hover" src="/gallery/img/image2.jpg" />
-                      </a>
-                    </div>
-                    <div className="col-md-6 col-lg-3 item">
-                      <a className="lightbox" href="/gallery/img/image3.jpg">
-                        <img className="img-fluid image scale-on-hover" src="/gallery/img/image3.jpg" />
-                      </a>
-                    </div>
-                    <div className="col-md-6 col-lg-3 item">
-                      <a className="lightbox" href="/gallery/img/image4.jpg">
-                        <img className="img-fluid image scale-on-hover" src="/gallery/img/image4.jpg" />
-                      </a>
-                    </div>
-                    <div className="col-md-6 col-lg-3 item">
-                      <a className="lightbox" href="/gallery/img/image5.jpg">
-                        <img className="img-fluid image scale-on-hover" src="/gallery/img/image5.jpg" />
-                      </a>
-                    </div>
-                    <div className="col-md-6 col-lg-3 item">
-                      <a className="lightbox" href="/gallery/img/image6.jpg">
-                        <img className="img-fluid image scale-on-hover" src="gallery/img/image6.jpg" />
-                      </a>
-                    </div>
-                    <div className="col-md-6 col-lg-3 item">
-                      <a className="lightbox" href="/gallery/img/image7.jpg">
-                        <img className="img-fluid image scale-on-hover" src="/gallery/img/image7.jpg" />
-                      </a>
-                    </div>
-                    <div className="col-md-6 col-lg-3 item">
-                      <a className="lightbox" href="/gallery/img/image8.jpg">
-                        <img className="img-fluid image scale-on-hover" src="/gallery/img/image8.jpg" />
-                      </a>
-                    </div>
-                    <div className="col-md-6 col-lg-3 item">
-                      <a className="lightbox" href="/gallery/img/image9.jpg">
-                        <img className="img-fluid image scale-on-hover" src="/gallery/img/image9.jpg" />
-                      </a>
+            {news.map((item, index) => {
+              return (
+                <div className="col-lg-12">
+                  <h3 style={{ color: "#cc3333" }}>{item.fields.eventName}</h3>
+                  <strong>{item.fields.eventSubtitle}</strong>
+                  <br></br>
+                  <div className="gallery-block grid-gallery">
+                    <div className="container">
+                      <div className="row">
+                        {item.fields.images.map((images, index) => {
+                          console.log("https:" + images.fields.file.url);
+                          return (
+                            <div className="col-md-6 col-lg-3 item">
+                              <a className="lightbox" href={"https:" + images.fields.file.url} title={images.fields.file.url}>
+                                <img className="img-fluid image scale-on-hover" src={"https:" + images.fields.file.url} />
+                              </a>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>

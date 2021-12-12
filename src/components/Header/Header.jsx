@@ -103,19 +103,19 @@ const Header = ({ products }) => {
             </li>
 
             <li>
-              <Link to="customer-reviews">Customer Reviews</Link>
+              <Link to="/customer-reviews">Customer Reviews</Link>
             </li>
 
             <li>
-              <Link to="news-events">News & Events</Link>
+              <Link to="/news-events">News & Events</Link>
             </li>
 
             <li>
-              <Link to="gallery">Gallery</Link>
+              <Link to="/gallery">Gallery</Link>
             </li>
 
             <li>
-              <Link to="contact-us">Contact Us</Link>
+              <Link to="/contact-us">Contact Us</Link>
             </li>
           </ul>
         </div>
