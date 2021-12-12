@@ -1,7 +1,8 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
 import OwlCarousel from "react-owl-carousel";
-// import img from "/img/slider/slider-img6.jpg";
+import { getProducts } from "../../actions/getProducts";
+import { useEffect, useState } from "react";
 
 const carouselItems = [
   {
@@ -19,6 +20,17 @@ const carouselItems = [
 ];
 
 const HomePage = () => {
+  // import img from "/img/slider/slider-img6.jpg";
+  const [products, setProducts] = useState([]);
+
+  async function mount() {
+    const response = await getProducts();
+    setProducts(response);
+  }
+
+  useEffect(() => {
+    mount();
+  }, []);
   const handleChange = () => {};
 
   const handleClickItem = () => {};
@@ -73,11 +85,13 @@ const HomePage = () => {
       <section className="top-letest-product-section">
         <div className="container">
           <div className="section-title">
-            <h2>OUR PRODUCTS</h2>s
+            <h2>OUR PRODUCTS</h2>
           </div>
           <OwlCarousel items={2} className="owl-theme" loop nav margin={8} nav={true}>
             <div>
               <img className="img" src="/img/slider/slider-img6.jpg" />
+              <h6>Tekken 250</h6>
+              <p>PRICE MRP- RS. 375000</p>
             </div>
             <div>
               <img className="img" src="/img/slider/slider-img6.jpg" />
