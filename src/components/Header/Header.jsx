@@ -7,25 +7,32 @@ const Header = ({ products }) => {
       <div className="header-top">
         <div className="container">
           <div className="row">
-            <div className="col-lg-2 text-center text-lg-left">
+            <div className="col-lg-3 text-center text-lg-left">
               <Link to="/" className="site-logo">
                 <img src="/img/logo.png" alt="" />
               </Link>
             </div>
 
-            <div className="col-xl-6 col-lg-5"></div>
+            <div className="col-xl-4 col-lg-8"></div>
 
-            <div className="col-xl-4 col-lg-5">
+            <div className="col-xl-5 col-lg-5">
               <div className="user-panel">
                 <div style={{ marginTop: 20 }}></div>
                 <div className="social-links">
-                  <a href="https://www.facebook.com/motorheadnepal" className="facebook" target="_blank">
+                  <a
+                    href="https://www.facebook.com/motorheadnepal"
+                    className="facebook"
+                    target="_blank"
+                  >
                     <i className="fa fa-facebook"></i>
                     <span>facebook</span>
                   </a>
                   <Link to="/" className="youtube">
                     <i className="fa fa-youtube"></i>
                     <span>youtube</span>
+                  </Link>
+                  <Link to="/" className="bookaride">
+                    <span style={{ color: "#cc3333" }}>Book a ride</span>
                   </Link>
                 </div>
               </div>
@@ -47,7 +54,9 @@ const Header = ({ products }) => {
                   <Link to="/aboutus/introduction">Introduction</Link>
                 </li>
                 <li>
-                  <Link to="/aboutus/board-of-directors">Board of Directors</Link>
+                  <Link to="/aboutus/board-of-directors">
+                    Board of Directors
+                  </Link>
                 </li>
               </ul>
             </li>

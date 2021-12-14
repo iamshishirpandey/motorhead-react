@@ -14,13 +14,20 @@ import ContactUsPage from "./pages/ContactUsPage/ContactUsPage";
 import { getProducts } from "./actions/getProducts";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import GalleryPage from "./pages/GalleryPage/GalleryPage";
+import Footer from "./components/Footer/Footer";
+import { getContactUs } from "./actions/getContactUs";
 
 function App() {
   const [products, setProducts] = useState([]);
+  const [contact, setContact] = useState({});
+  const [aboutUs, setAboutUs] = useState({});
 
   async function mount() {
     const response = await getProducts();
+    const contactUs = await getContactUs();
     setProducts(response);
+
+    setContact(contactUs);
   }
 
   useEffect(() => {
@@ -72,6 +79,7 @@ function App() {
           <HomePage products={products} />
         </Route>
       </Switch>
+      {contact.items && <Footer contact={contact.items[0].fields} />}
     </Fragment>
   );
 }
